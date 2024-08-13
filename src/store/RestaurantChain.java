@@ -33,7 +33,11 @@ public class RestaurantChain {
                     orderPrice += food.getPrice();
                     cost += food.getOriginCost();
                 }
+                //결제 금액의 3%를 비용으로 잡는다.
+                cost += orderPrice * order.getTransactionFeePercent();
             }
+            cost += store.getRentalFee();
         }
+        return calculateRevenue() - cost;
     }
 }
